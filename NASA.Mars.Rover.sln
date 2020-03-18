@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NASA.Mars.Rover.Photo.API.Client", "NASA.Mars.Rover.Photo.API.Client\NASA.Mars.Rover.Photo.API.Client.csproj", "{74D1380C-A9A3-4CC1-986B-26ABC02022EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NASA.Mars.Rover.Photo.WebClient", "NASA.Mars.Rover.Photo.WebClient\NASA.Mars.Rover.Photo.WebClient.csproj", "{97C02DED-C262-43A6-BDBB-CE88682CF1EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NASA.Mars.Rover.Photo.BatchClient", "NASA.Mars.Rover.Photo.BatchClient\NASA.Mars.Rover.Photo.BatchClient.csproj", "{E4DDB265-B1CC-41CE-A4EB-183ED40EE334}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74D1380C-A9A3-4CC1-986B-26ABC02022EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74D1380C-A9A3-4CC1-986B-26ABC02022EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74D1380C-A9A3-4CC1-986B-26ABC02022EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74D1380C-A9A3-4CC1-986B-26ABC02022EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97C02DED-C262-43A6-BDBB-CE88682CF1EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97C02DED-C262-43A6-BDBB-CE88682CF1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97C02DED-C262-43A6-BDBB-CE88682CF1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97C02DED-C262-43A6-BDBB-CE88682CF1EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4DDB265-B1CC-41CE-A4EB-183ED40EE334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4DDB265-B1CC-41CE-A4EB-183ED40EE334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4DDB265-B1CC-41CE-A4EB-183ED40EE334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4DDB265-B1CC-41CE-A4EB-183ED40EE334}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {596437E5-0392-4FD1-9044-0504DDE396D9}
+	EndGlobalSection
+EndGlobal

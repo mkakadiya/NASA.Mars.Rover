@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+
+    <div class="carousel-inner" role="listbox">
+        @foreach (string url in Model.PhotoUrls)
+        {
+        <div class="item active">
+            <img src="@url" alt="Mars Rover Camera" class="img-responsive"/>
+            <div class="carousel-caption" role="option">
+                <p>
+                    Mars rover image
+                    <a class="btn btn-default" href="https://api.nasa.gov/">
+                        Learn More
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        }
+        </div>
+
+</div>
+
+
