@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace NASA.Mars.Rover.Photo.API.Client
 {
-    public class Downloader
+    public class Downloader: IDownloader
     {
 
         private readonly string _nasaPhotoEndPoint;
@@ -24,7 +25,7 @@ namespace NASA.Mars.Rover.Photo.API.Client
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public async System.Threading.Tasks.Task<IEnumerable<string>> DownloadPhotoUrlAsync(string date)
+        public async Task<IEnumerable<string>> DownloadPhotoUrlAsync(string date)
         {
             List<string> photoListUrls = new List<string>();
 
@@ -33,7 +34,7 @@ namespace NASA.Mars.Rover.Photo.API.Client
 
             try
             {
-               //Call nasa api and extract images url
+                //Call nasa api and extract images url
                 HttpResponseMessage responseMessage = await client.GetAsync("api/v1/rovers/curiosity/photos?earth_date=" + date + "&api_key=DEMO_KEY"); //TODO: move url to config
                 Photos photos = new Photos();
 
@@ -58,7 +59,7 @@ namespace NASA.Mars.Rover.Photo.API.Client
         /// </summary>
         /// <param name="photoUrls"></param>
         /// <returns></returns>
-        public async void DowloadPhotoAsync(IEnumerable<string> photoUrls)
+        public async Task<bool> DowloadPhotoAsync(IEnumerable<string> photoUrls)
         {
             try
             {
@@ -79,9 +80,9 @@ namespace NASA.Mars.Rover.Photo.API.Client
             catch (Exception)
             {
                 //log exception
-
+                return false;
             }
+            return true;
         }
-
     }
 }

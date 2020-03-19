@@ -22,6 +22,11 @@ namespace NASA.Mars.Rover.Photo.BatchClient
                 .AddJsonFile("appsettings.json", true, true)
                 .Build();
 
+            ProcessBatch();
+        }
+
+        public static void ProcessBatch()
+        {
             Downloader downloader = new Downloader(configuration["NasaMarsRoverPhotoEndPoint"], configuration["DirectoryPath"]);
 
             IEnumerable<string> dates = GetDates(configuration["BatchFilename"]);
@@ -32,10 +37,9 @@ namespace NASA.Mars.Rover.Photo.BatchClient
                 IEnumerable<string> photoUrls = downloader.DownloadPhotoUrlAsync(date).Result;
 
                 Console.WriteLine("Downlaoding images...");
-                //Download rover images
+                //Download rover images async
                 downloader.DowloadPhotoAsync(photoUrls);
             }
-            
         }
 
         public static IEnumerable<string> GetDates(string filePath)
@@ -52,13 +56,19 @@ namespace NASA.Mars.Rover.Photo.BatchClient
                     {
                         //Try convert file line to date format
                         if (DateTime.TryParse(line, out dateValue))
+                        {
                             dates.Add(dateValue.ToString("yyyy-MM-dd"));
+                        }
+                        else
+                        {
+                            //Log dates which are not correctly formated
+                        }
 
                         line = sr.ReadLine();
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //log file exception
             }

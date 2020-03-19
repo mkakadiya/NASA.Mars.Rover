@@ -15,23 +15,33 @@ namespace NASA.Mars.Rover.Photo.WebClient.Pages
 
         public IEnumerable<string> PhotoUrls { get; private set; }
 
+        public string Date { get; private set; }
+
         public IndexModel(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
 
 
-        public void OnGet(string date = "2017-02-27")
+        public void OnGet(string date = "2019-09-28")
         {
-            
-            Downloader downloader = new Downloader(configuration["NasaMarsRoverPhotoEndPoint"], configuration["DirectoryPath"]);
+            IEnumerable<string> photoUrls= null;
 
-            //Get rover images url
-            IEnumerable<string> photoUrls = downloader.DownloadPhotoUrlAsync(date).Result;
+            DateTime dateValue;
 
-            //Download rover images async
-            downloader.DowloadPhotoAsync(photoUrls);
+            //Validate date format then only process with request
+            if (DateTime.TryParse(date, out dateValue))
+            {
+                Downloader downloader = new Downloader(configuration["NasaMarsRoverPhotoEndPoint"], configuration["DirectoryPath"]);
 
+                //Get rover images url
+                photoUrls = downloader.DownloadPhotoUrlAsync(dateValue.ToString("yyyy-MM-dd")).Result;
+
+                //Download rover images async. This will done in batch downloading.
+                //downloader.DowloadPhotoAsync(photoUrls);
+
+            }
+            Date = date.ToString();
             PhotoUrls = photoUrls;
         }
     }
